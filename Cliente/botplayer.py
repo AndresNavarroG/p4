@@ -34,20 +34,23 @@ def escoger_movimiento( amenazas ):
             eleccion=random.randint(-3,-1)
         if eleccion==1:
             eleccion=random.randint(1,3)
-    if suma_vertical < suma_horizontal:
-        if cuadrante_seguro==0:
-            movimiento_x='0'
-            movimiento_y=str(eleccion)
-        if cuadrante_seguro==2:
-            movimiento_x='0'
-            movimiento_y=str(-eleccion)
-    if suma_vertical > suma_horizontal:
-        if cuadrante_seguro==1:
-            movimiento_x=str(-eleccion)
-            movimiento_y='0'
-        if cuadrante_seguro==3:
-            movimiento_x=str(eleccion)
-            movimiento_y="0"
+    BANDERA=True
+    while BANDERA:
+        if suma_vertical < suma_horizontal:
+            if cuadrante_seguro==0:
+                movimiento_x='0'
+                movimiento_y=str(eleccion)
+            if cuadrante_seguro==2:
+                movimiento_x='0'
+                movimiento_y=str(-eleccion)
+        if suma_vertical > suma_horizontal:
+            if cuadrante_seguro==1:
+                movimiento_x=str(-eleccion)
+                movimiento_y='0'
+            if cuadrante_seguro==3:
+                movimiento_x=str(eleccion)
+                movimiento_y="0"
+        BANDERA=False
 
     #ir renovando posicion
     print  movimiento_x + "," + movimiento_y
