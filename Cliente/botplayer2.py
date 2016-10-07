@@ -56,9 +56,6 @@ def escoger_disparo( grados,cuadrantes):
 		if cuadrantes[cuadrante]>maxnaves:
 			cuadranteP=cuadrante
 			maxnaves=cuadrantes[cuadrante]
-	cantidad_de_los_grados=grados.values()
-	cantidad_de_los_grados.sort()
-	cantidad_de_los_grados.reverse()
 	for grado in grados:
 		if grados[grado]==cantidad_de_los_grados[0] and grado!="a":
 			grado_predomintante=grado
