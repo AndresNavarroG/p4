@@ -10,7 +10,8 @@ def spawn(cliente):
     posicion = mensaje.split(",")
     return int(posicion[0]), int(posicion[1])
 cliente = socket.socket( socket.AF_INET, socket.SOCK_STREAM )
-IP = raw_input("ingrese la ip ")
+#IP = raw_input("ingrese la ip ")
+IP = "127.0.0.1"
 PORT = input("ingrese el puerto ")
 cliente.connect( (IP ,PORT ) )
 print "Conectado"
