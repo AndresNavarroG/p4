@@ -23,6 +23,9 @@ try:
 
         #Recibir mensaje del servidor
         mensaje = cliente.recv(1024)
+        if len(mensaje.split(':')) != 2:
+            break
+
 
         # mensaje, es el string de amenazas, en base a aquel mensaje, tomar una decision
         
@@ -32,12 +35,9 @@ try:
         escoger_movimieto( mensaje ) se encuentra en botdummy, es tarea de ustedes completar esta funcion.
 
         """
-        #disparo = escoger_disparo( mensaje )        
-        #movimiento = escoger_movimiento( mensaje )
-        #mensaje =  disparo+"/"+movimiento
-        
-        mensaje=bot(mensaje)
-        
+        disparo = escoger_disparo( mensaje )        
+        movimiento = escoger_movimiento( mensaje )
+        mensaje =  disparo+"/"+movimiento
         cliente.send(mensaje )
 except socket.error:
     cliente.close()
