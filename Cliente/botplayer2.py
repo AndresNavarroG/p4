@@ -19,7 +19,10 @@ def procesar(amenazas):
 	grados=dict()
 	for g in amenazas[0]:
 		if grados.has_key(g)==False:
-			grados[g]=0
+			if g=="a":
+				#hacer nada
+			else:
+				grados[int(g)]=0
 		grados[g]+=1
 	for cuadrante in amenazas[1]:
 		cuadrantes[amenazas[1].index(cuadrante)+1]=int(cuadrante)
@@ -28,6 +31,65 @@ def procesar(amenazas):
 	#cuadrantes 1;4,2;4 hay cuatro navez en el cuadrante 1
 	return grados,cuadrantes			
 
+
+
+def escoger_movimiento(grados,cuadrantes):
+	cuadranteS=0
+	minnaves=1000
+	cantidad_de_los_grados=grados.values()
+	cantidad_de_los_grados.sort()
+	grado_-_predominante=0
+    for cuadrante in cuadrantes:
+		if cuadrantes[cuadrante]<minnaves:
+        	cuadranteS=cuadrante
+			minnaves=cuadrantes[cuadrante]
+	for grado in grados:
+		if grados[grado]==cantidad_de_los_grados[0]:
+			grado_-_predominante=grado
+    suma_vertical=int(cuadrantes[1])+int(cuadrantes[3])
+    suma_horizontal=int(cuadrantes[2])+int(cuadrantes[4])
+	if grado_-_predominante==1:
+		eleccion=random.randint(4,5)
+	elif grado_-_predominante==2:
+		eleccion=random.randint(2,3)
+	else: #==3  
+		eleccion=1
+    if g1 <= g2 and g1 <=g3:
+        if g2 <= g1 and g2 <=g3:
+            eleccion = random.randint(2,3)
+        if g3 <= g1 and g3 <=g2:
+            eleccion = 1
+    elif g2 <= g1 and g2 <=g3:
+        eleccion = random.randint(2,3)
+    elif g3 <= g1 and g3 <=g2:
+        eleccion = 1
+    elif g1==g2 and g2==g3 and g3==0:
+        eleccion = random.randint(0,1)
+        if eleccion==0:
+            eleccion=random.randint(-3,-1)
+        if eleccion==1:
+            eleccion=random.randint(1,3)
+    BANDERA=True
+    while BANDERA:
+        if suma_vertical < suma_horizontal:
+            if cuadrante_seguro==0:
+                movimiento_x='0'
+                movimiento_y=str(eleccion)
+            if cuadrante_seguro==2:
+                movimiento_x='0'
+                movimiento_y=str(-eleccion)
+        if suma_vertical > suma_horizontal:
+            if cuadrante_seguro==1:
+                movimiento_x=str(-eleccion)
+                movimiento_y='0'
+            if cuadrante_seguro==3:
+                movimiento_x=str(eleccion)
+                movimiento_y="0"
+        BANDERA=False
+
+    #ir renovando posicion
+    print  movimiento_x + "," + movimiento_y
+    return movimiento_x + "," + movimiento_y
 
 def coords_disp(cuadranteP,eleccion):
 	if cuadranteP==1:
@@ -42,7 +104,7 @@ def coords_disp(cuadranteP,eleccion):
 	if cuadranteP==4:
 		x=eleccion
 		y=0
-	return str(x)+","+str(y)
+	return str(x)+","str(y)
 
 def escoger_disparo( grados,cuadrantes):
     print "comenzando disparo"
@@ -57,7 +119,7 @@ def escoger_disparo( grados,cuadrantes):
 			cuadranteP=cuadrante
 			maxnaves=cuadrantes[cuadrante]
 	for grado in grados:
-		if grados[grado]==cantidad_de_los_grados[0] and grado!="a":
+		if grados[grado]==cantidad_de_los_grados[0]:
 			grado_predomintante=grado
 	if grado_predominante==1:
 		eleccion=random.randint(4,5)
@@ -66,8 +128,3 @@ def escoger_disparo( grados,cuadrantes):
 	else: #==3  
 		eleccion=1
 	return coords_disp(cuadranteP,eleccion)
-def disparo():
-    pass
-
-def movimiento():
-    pass
