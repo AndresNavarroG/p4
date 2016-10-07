@@ -211,7 +211,7 @@ except KeyboardInterrupt:
 
 servidor.close()
 log.append("juego:terminar")
-with open("../Visualizacion/logs/"+title+".log","w") as log_file:
+with open("../Visualizacion/logs/"+"title"+".log","w") as log_file:
     for linea in log:
         log_file.write(linea+"\n")
 
