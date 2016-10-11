@@ -17,10 +17,10 @@ import time
 """
 IP = "localhost" 
 PORT = 8888 
-NJ = 1
+NJ = 2
 
 if (NJ < 5):
-    SIZE = 10
+    SIZE = 11
 elif (NJ < 10):
     SIZE = 15
 else:
